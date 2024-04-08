@@ -20,7 +20,7 @@ from django.urls import path, include
 from django.http import HttpResponse
 
 def mi_func(xx):
-    return HttpResponse("<h1>Bienvenidos a mi proyecto</h1>")
+    return HttpResponse("<h1>Bienvenidos a mi proyecto</h1>")  # Acá está como demostración pero es mejor que las funciones no estén acá.
 
 urlpatterns = [
     path('admin/', admin.site.urls),

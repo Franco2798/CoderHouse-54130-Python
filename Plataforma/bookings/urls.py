@@ -25,7 +25,7 @@ def mi_vista(xx):
 
 urlpatterns = [
     path("", home_view),
-    path("list/", list_view),
+    path("list/", list_view, name="bookings-list"),
     path("buscar/<nombre_de_usuario>", search_view),
     path("crear/<nombre_de_usuario>/<destino>", create_view),
 ]
