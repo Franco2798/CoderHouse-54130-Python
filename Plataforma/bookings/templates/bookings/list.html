@@ -1,18 +1,36 @@
-{% extends 'base.html' %}
+{% extends 'bookings/base.html' %}
 
 {% block title %} Listado de Reservas {% endblock %}
 
 {% block content %}
 <section>
     <h2>Reservas</h2>
-    <div class="reservas-list">
-        {% for reserva in reservas %}
-            <div class="discussion-item">
-                <p><a href="http://google.com">{{ reserva }}</a></p>
-            </div>
-        {% empty %}
-            <p>No hay Reservas disponibles.</p>
-        {% endfor %}
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Usuario</th>
+                    <th>Destino</th>
+                    <th>Acciones</th> <!-- Agregamos una nueva columna para las acciones -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservas %}
+                    <tr>
+                        <td>{{ reserva.nombre_de_usuario }}</td>
+                        <td>{{ reserva.destino }}</td>
+                        <td>
+                            <a href="/bookings/detail/{{ reserva.id }}" class="btn btn-primary btn-sm">Ver Reserva</a> <!-- Botón para ver la reserva -->
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="3">No hay Reservas disponibles.</td> <!-- Ajustamos el colspan para incluir la nueva columna -->
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 </section>
 {% endblock %}
+

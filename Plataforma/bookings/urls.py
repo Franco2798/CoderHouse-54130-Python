@@ -18,14 +18,14 @@ from django.urls import path
 
 from django.http import HttpResponse
 
-from .views import home_view, list_view, search_view, create_view
+from .views import home_view, detail_view, list_view, search_view
 
 def mi_vista(xx):
     return HttpResponse("<h3>Bienvenidos a mi aplicación de reservas.</h3>")
 
 urlpatterns = [
     path("", home_view),
+    path("detail/<booking_id>", detail_view),
     path("list/", list_view, name="bookings-list"),
     path("buscar/<nombre_de_usuario>", search_view),
-    path("crear/<nombre_de_usuario>/<destino>", create_view),
 ]

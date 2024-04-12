@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+
 from .models import Reserva
 
 # Create your views here.
@@ -23,6 +24,11 @@ def list_view(request):
     return render(request, "list.html", contexto_dict)
 """
 
+def detail_view(request, booking_id):
+    reserva = Reserva.objects.get(id=booking_id)
+    contexto_dict = {"reserva": reserva}
+    return render(request, "bookings/detail.html", contexto_dict)
+
 def list_view(request):
     reservas = Reserva.objects.all()
     contexto_dict = {'reservas': reservas}
@@ -34,10 +40,12 @@ def search_view(request, nombre_de_usuario):
     return render(request, "bookings/list.html", contexto_dict)
 
 
-
+"""
 def create_view(request, nombre_de_usuario, destino):
 
     # reserva = Reserva("", nombre_de_usuario, destino)
     reserva = Reserva.objects.create(nombre_de_usuario=nombre_de_usuario, destino=destino)
 
     return HttpResponse(f"resultado: {reserva}")
+
+"""

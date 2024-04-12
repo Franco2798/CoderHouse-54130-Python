@@ -18,4 +18,3 @@ class Reserva(models.Model):
 
     def __str__(self):
         return f"Esta es una reserva de {self.nombre_de_usuario} con destino a {self.destino}"
-
