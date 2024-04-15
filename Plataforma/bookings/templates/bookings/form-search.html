@@ -1,0 +1,28 @@
+{% extends 'bookings/base.html' %}
+
+{% block title %}Buscar Reservas{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <h2 class="mb-4">Buscar Reservas</h2>
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        Filtros de búsqueda
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'zzz' %}">
+                            {% csrf_token %}  
+                            {{ search_form.as_p }} 
+                            <button type="buscar" class="btn btn-primary">Buscar</button>
+                            <a href="{% url 'bookings-list' %}" class="btn btn-secondary">Limpiar</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
