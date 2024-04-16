@@ -1,11 +1,11 @@
 {% extends 'bookings/base.html' %}
 
-{% block title %}Buscar Sala{% endblock %}
+{% block title %}Modificar Reserva{% endblock %}
 
 {% block content %}
 <section class="py-5">
     <div class="container">
-        <h2 class="mb-4"> Crear Sala</h2>
+        <h2 class="mb-4">Modificar Sala</h2>
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="card shadow-sm">
@@ -13,11 +13,10 @@
                         Datos de la Sala
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{% url 'sala-create' %}">
-                            {% csrf_token %}  
-                            {{ create_form.as_p }} 
-                            <button type="buscar" class="btn btn-primary">Enviar</button>
-                            <a href="{% url 'bookings-list' %}" class="btn btn-secondary">Limpiar</a>
+                        <form method="POST" action="{% url 'sala-update' OBJETO.id %}">  <!-- Pablo notó esto !! -->
+                            {% csrf_token %}  <!-- CSRF Token added here -->
+                            {{ ENRIQUE.as_p }}  <!-- ----------------------------------- Pablo notó esto !! -->
+                            <button type="buscar" class="btn btn-primary">Actualizar</button>
                         </form>
                     </div>
                 </div>
