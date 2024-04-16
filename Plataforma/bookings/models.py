@@ -10,6 +10,15 @@ class Sala(models.Model):
     def __str__(self):
         return f"{self.nombre} - {'Disponible' if self.disponible else 'No Disponible'} - Capacidad: {self.capacidad}"
 
+class Usuario(models.Model):
+    nombre = models.CharField(max_length=100)
+    edad = models.IntegerField()
+    nacionalidad = models.CharField(max_length=100)
+    dni = models.CharField(max_length=8)
+
+    def __str__(self):
+        return f"El señor/a {self.nombre} con documento nro: {self.dni}"
+
 class Reserva(models.Model):
     nombre_de_usuario = models.CharField(max_length=50)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE, related_name='reservas')
@@ -20,4 +29,6 @@ class Reserva(models.Model):
 
     def __str__(self):
         return f"{self.nombre_de_usuario} - {self.sala.nombre} - {self.fecha}"
+    
+
 
