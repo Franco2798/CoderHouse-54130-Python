@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-
+from django.views.generic.base import RedirectView
 from django.http import HttpResponse
 
 def mi_func(xx):
@@ -24,6 +24,6 @@ def mi_func(xx):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("", mi_func),
+    path("", RedirectView.as_view(url="/bookings/", permanent=True)),
     path("bookings/", include("bookings.urls")),
 ]
