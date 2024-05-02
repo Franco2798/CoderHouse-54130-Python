@@ -1,0 +1,47 @@
+{% extends 'bookings/base.html' %}
+
+{% block title %} Listado de Usuarios Viajeros {% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0">Usuarios</h2>
+            <a href="{% url 'crear-usuario-viajero' %}" class="btn btn-success">Crear Usuario</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Edad</th>
+                    <th scope="col">Nacionalidad</th>
+                    <th scope="col">Dni</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if todos_los_usuarios %}
+                {% for usuario in todos_los_usuarios %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ usuario.nombre }}</td>
+                    <td>{{ usuario.edad }}</td>
+                    <td>{{ usuario.nacionalidad }}</td>
+                    <td>{{ usuario.dni }}</td>
+                    <td>
+                        <a href="{% url 'editar-usuario-viajero' usuario.id %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'eliminar-usuario-viajero' usuario.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                        <a href="{% url 'ver-usuario-viajero' usuario.id %}" class="btn btn-primary btn-sm">Ver</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="7">No hay Usuarios disponibles.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

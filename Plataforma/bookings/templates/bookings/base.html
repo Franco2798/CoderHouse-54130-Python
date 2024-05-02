@@ -15,6 +15,29 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
+                {% if user.is_authenticated %}
+                <!-- Dropdown for Usuario -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkReserva" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Usuarios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkReserva">
+                        <a class="dropdown-item" href="{% url 'list-usuario-viajero' %}">Todos los Usuarios</a>
+                        <a class="dropdown-item" href="{% url 'crear-usuario-viajero' %}">Crear Usuario</a>
+                        <a class="dropdown-item" href="{% url 'buscar-usuario-viajero' %}">Buscar Usuario</a>
+                    </div>
+                </li>
+                <!-- Dropdown for Vuelo -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkSala" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Vuelos
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSala">
+                        <a class="dropdown-item" href="{% url 'vuelo-list' %}">Todos los Vuelos</a>
+                        <a class="dropdown-item" href="{% url 'vuelo-create' %}">Crear Vuelo</a>
+                        <a class="dropdown-item" href="{% url 'vuelo-search' %}">Buscar Vuelo</a>
+                    </div>
+                </li>
                 <!-- Dropdown for Reserva -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkReserva" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -23,30 +46,27 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkReserva">
                         <a class="dropdown-item" href="{% url 'bookings-list' %}">Todas las Reservas</a>
                         <a class="dropdown-item" href="{% url 'yyy' %}">Crear Reserva</a>
-                        <a class="dropdown-item" href="{% url 'zzz' %}">Buscar Reserva por Usuario</a>
+                        <a class="dropdown-item" href="{% url 'zzz' %}">Buscar Reserva por usuario</a>
                     </div>
                 </li>
-                <!-- Dropdown for Sala -->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkSala" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Salas
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSala">
-                        <a class="dropdown-item" href="{% url 'sala-list' %}">Todas las Salas</a>
-                        <a class="dropdown-item" href="{% url 'sala-create' %}">Crear Sala</a>
-                        <a class="dropdown-item" href="{% url 'sala-search' %}">Buscar Sala por Usuario</a>
-                    </div>
-                </li>
-                <!-- Dropdown for Sala (VBC)-->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLinkSala" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Salas (VBC)
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLinkSala">
-                        <a class="dropdown-item" href="{% url 'vbc_sala_list' %}">Todas las Salas</a>
-                        <a class="dropdown-item" href="{% url 'vbc_sala_create' %}">Crear Sala</a>
-                    </div>
-                </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'editar-perfil' %}">{{ user }}</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'crear-usuario' %}">Crear Usuario</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -62,6 +82,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-
 

@@ -13,10 +13,8 @@
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">{{ reserva.nombre_de_usuario }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Sala: {{ reserva.sala }}</h6>
-                        <p class="card-text">Fecha: {{ reserva.fecha | date:"d/m/Y" }}</p>
-                        <p class="card-text">Hora de inicio: {{ reserva.hora_inicio | date:"H:i" }}</p>
-                        <p class="card-text">Hora de fin: {{ reserva.hora_fin | date:"H:i" }}</p>
+                        <h6 class="card-subtitle mb-2 text-muted">Vuelo: {{ reserva.vuelo }}</h6>
+                        <p class="card-text">Cantidad de pasajeros: {{ reserva.cantidad_de_pasajeros }}</p>
                         <p class="card-text">Descripción: {{ reserva.descripcion }}</p>
                     </div>
                     {% comment %}

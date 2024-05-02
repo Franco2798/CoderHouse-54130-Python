@@ -1,23 +1,22 @@
 {% extends 'bookings/base.html' %}
 
-{% block title %}Buscar Reservas{% endblock %}
+{% block title %}Modificar Reserva{% endblock %}
 
 {% block content %}
 <section class="py-5">
     <div class="container">
-        <h2 class="mb-4 text-center">Buscar Reservas</h2>
+        <h2 class="mb-4 text-center">Modificar Reserva</h2>
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card shadow-sm">
                     <div class="card-header">
-                        Filtros de búsqueda
+                        Datos de la Reserva
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{% url 'zzz' %}">
-                            {% csrf_token %}  
-                            {{ CERATI.as_p }} 
-                            <button type="buscar" class="btn btn-primary">Buscar</button>
-                            <a href="{% url 'bookings-list' %}" class="btn btn-secondary">Limpiar</a>
+                        <form method="POST" action="{% url 'reserva-update' GUITARRA.id %}">  
+                            {% csrf_token %}  <!-- CSRF Token added here -->
+                            {{ MOLLO.as_p }}  
+                            <button type="buscar" class="btn btn-primary">Actualizar</button>
                         </form>
                     </div>
                 </div>

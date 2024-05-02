@@ -1,6 +1,6 @@
 {% extends 'bookings/base.html' %}
 
-{% block title %}Detalle de la Sala{% endblock %}
+{% block title %}Detalle del Vuelo{% endblock %}
 
 {% block content %}
 <section class="py-5">
@@ -9,43 +9,45 @@
             <div class="col-lg-8 mx-auto">
                 <div class="card shadow-sm">
                     <div class="card-header">
-                        Detalle de la Sala
+                        Detalle del Vuelo
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ sala.nombre }}</h5>
-                        {% if sala.disponible %}
+                        <h5 class="card-title">{{ vuelo.nombre }}</h5>
+                        {% if vuelo.disponible %}
                         <h6 class="card-subtitle mb-2">Disponibilidad: Disponible</h6>
                         {% else %}
                         <h6 class="card-subtitle mb-2">Disponibilidad: No Disponible</h6>
                         {% endif %}
-                        <p class="card-text">Capacidad: {{ sala.capacidad }}</p>
-                        <p class="card-text">Descripción: {{ sala.descripcion | default:"No proporcionado" }}</p>
+                        <p class="card-text">Capacidad: {{ vuelo.capacidad }}</p>
+                        <p class="card-text">Origen: {{ vuelo.origen }}</p>
+                        <p class="card-text">Destino: {{ vuelo.destino }}</p>
+                        <p class="card-text">Fecha: {{ vuelo.fecha | date:"d/m/Y"}}</p>
+                        <p class="card-text">Hora de Salida: {{ vuelo.hora_salida | date:"H:i" }}</p>
+                        <p class="card-text">Hora de Llegada: {{ vuelo.hora_llegada | date:"H:i"}}</p>
                     </div>
                 </div>
                 <div class="mt-4">
-                    <h3>Reservas para esta Sala</h3>
+                    <h3>Reservas para este Vuelo</h3>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Nombre de Usuario</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Hora de Inicio</th>
-                                <th scope="col">Hora de Fin</th>
+                                <th scope="col">Vuelo</th>
+                                <th scope="col">Cantidad de Pasajeros</th>
                                 <th scope="col">Descripción</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for reserva in sala.reservas.all %}
+                            {% for reserva in vuelo.vuelos.all %}
                             <tr>
                                 <td>{{ reserva.nombre_de_usuario }}</td>
-                                <td>{{ reserva.fecha | date:"d/m/Y" }}</td>
-                                <td>{{ reserva.hora_inicio | date:"H:i" }}</td>
-                                <td>{{ reserva.hora_fin | date:"H:i" }}</td>
+                                <td>{{ reserva.vuelo  }}</td>
+                                <td>{{ reserva.cantidad_de_pasajeros  }}</td>
                                 <td>{{ reserva.descripcion | default:"No proporcionado" }}</td>
                             </tr>
                             {% empty %}
                             <tr>
-                                <td colspan="5">No hay reservas para esta sala.</td>
+                                <td colspan="5">No hay reservas para este vuelo.</td>
                             </tr>
                             {% endfor %}
                         </tbody>

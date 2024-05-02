@@ -1,0 +1,32 @@
+{% extends 'bookings/base.html' %}
+
+{% block title %}Detalle del Usuario Viajero{% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        Detalle del Usuario
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Nombre: {{ usuario_viajero.nombre }}</h5>
+                        <p class="card-text">Edad: {{ usuario_viajero.edad }}</p>
+                        <p class="card-text">Nacionalidad: {{ usuario_viajero.nacionalidad }}</p>
+                        <p class="card-text">DNI: {{ usuario_viajero.dni }}</p>
+                    </div>
+                    {% comment %}
+                    <div class="card-footer text-muted">
+                        <a href="{% url 'editar-usuario-viajero' usuario_viajero.id %}" class="btn btn-primary">Editar Usuario</a>
+                        <a href="{% url 'eliminar-usuario-viajero' usuario_viajero.id %}" class="btn btn-danger">Eliminar Usuario</a>
+                        <a href="{% url 'list-usuario-viajero' %}" class="btn btn-secondary">Volver al listado</a>
+                    </div>
+                    {% endcomment %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

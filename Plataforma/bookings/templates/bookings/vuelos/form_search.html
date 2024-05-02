@@ -1,11 +1,11 @@
 {% extends 'bookings/base.html' %}
 
-{% block title %}Buscar Reservas{% endblock %}
+{% block title %}Buscar Vuelo{% endblock %}
 
 {% block content %}
 <section class="py-5">
     <div class="container">
-        <h2 class="mb-4 text-center">Buscar Reservas</h2>
+        <h2 class="mb-4 text-center">Buscar Vuelo</h2>
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="card shadow-sm">
@@ -13,9 +13,9 @@
                         Filtros de búsqueda
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{% url 'zzz' %}">
+                        <form method="POST" action="{% url 'vuelo-search' %}">
                             {% csrf_token %}  
-                            {{ CERATI.as_p }} 
+                            {{ ARJONA.as_p }} 
                             <button type="buscar" class="btn btn-primary">Buscar</button>
                             <a href="{% url 'bookings-list' %}" class="btn btn-secondary">Limpiar</a>
                         </form>

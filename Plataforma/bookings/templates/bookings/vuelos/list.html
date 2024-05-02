@@ -1,0 +1,55 @@
+{% extends 'bookings/base.html' %}
+
+{% block title %} Listado de Vuelos {% endblock %}
+
+{% block content %}
+<section class="py-5">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="mb-0">Vuelos</h2>
+            <a href="{% url 'vuelo-create' %}" class="btn btn-success">Crear Vuelo</a>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Disponible</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Capacidad</th>
+                    <th scope="col">Origen</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Horario de Salida</th>
+                    <th scope="col">Horario de llegada</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if SANTIAGOMOTORIZADO %}
+                {% for vuelo in SANTIAGOMOTORIZADO %}
+                <tr>
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ vuelo.disponible }}</td>
+                    <td>{{ vuelo.nombre }}</td>
+                    <td>{{ vuelo.capacidad }}</td>
+                    <td>{{ vuelo.origen }}</td>
+                    <td>{{ vuelo.destino }}</td>
+                    <td>{{ vuelo.fecha | date:"d/m/Y"}}</td>
+                    <td>{{ vuelo.hora_salida | date:"H:i"}}</td>
+                    <td>{{ vuelo.hora_llegada | date:"H:i"}}</td>
+                    <td>
+                        <a href="{% url 'vuelo-update' vuelo.id %}" class="btn btn-primary btn-sm">Editar</a>
+                        <a href="{% url 'vuelo-delete' vuelo.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                        <a href="{% url 'vuelo-detail' vuelo.id %}" class="btn btn-primary btn-sm">Ver</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% else %}
+                <tr>
+                    <td colspan="7">No hay Vuelos disponibles.</td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}
